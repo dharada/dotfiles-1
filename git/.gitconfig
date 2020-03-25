@@ -1,9 +1,57 @@
+[filesystem "JetBrains s.r.o|11.0.4|/dev/sda7"]
+    timestampResolution = 8000 nanoseconds
+    minRacyThreshold = 7582 microseconds
 [user]
-	name = Adwin Ying
-	email = adwinying@gmail.com
+    email = dharada6@gmail.com
+    name = Daisuke Harada
+
+[alias]
+    # いい感じのグラフでログを表示
+    graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+    # 上の省略形
+    gr = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+    st = status
+    cm = commit
+    cit = commit -m 'update'
+    # Untracked filesを表示せず，not stagedと，stagedだけの状態を出力する
+    stt = status -uno
+    # 行ごとの差分じゃなくて，単語レベルでの差分を色付きで表示する
+    difff = diff --word-diff
+ # ファイル名のみの差分を表示する
+    difff = diff --name-only
+    # staged diff
+    diffs = diff --cached
+    dp = diff --no-prefix
+    dsp = diff --cached --no-prefix
+    co = checkout
+    logg = log --graph --all --decorate
+    log1 = log --pretty='format:%C(yellow)%h%Creset %C(magenta)%cd%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset%C(black bold)%ar%Creset' --date=iso
+    # lg = log --graph --pretty=format:'%Cred%h%Creset - %s%C(yellow)%d%Creset %Cgreen(%cr:%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lg = log --graph --pretty=format:'%Cred%h%Creset - %s%C(yellow)%d%Creset %Cgreen(%cr:%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=iso
+    lga = !git lg --all
+    log0 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)― %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+    log2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)― %an%C(reset)' --abbrev-commit
+    log3 = log --graph --date-order -C -M --pretty=format:<%h> %ad [%an] %Cgreen%d%Creset %s --all --date=short
+    log4 = log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(black bold)%an, %ar%Creset'
+    sgraph = !git log --oneline --graph
+    ancestor = !zsh -c 'diff -u <(git rev-list --first-parent ${1:-master}) <(git rev-list --first-parent ${2:-HEAD}) | sed -ne \"s/^ //p\" | head -n 1' -
+    unstage = reset HEAD
+    #branch 長い。
+    b = branch
+    # 現在のブランチ名(Branch Name)を出力する
+    bn = rev-parse --abbrev-ref HEAD
+    #ブランチ名やタグ名、HEADなどがついたコミットだけをグラフ表示する(Branch Graph)
+    bg = log --graph --simplify-by-decoration --pretty=format:'%d' --all
+
+[filesystem "Oracle Corporation|11.0.5|/dev/sda1"]
+    timestampResolution = 10000 nanoseconds
+    minRacyThreshold = 4879 microseconds
+[filesystem "Oracle Corporation|11.0.5|/dev/sdb1"]
+    timestampResolution = 16000 nanoseconds
+    minRacyThreshold = 7096 microseconds
+
 
 [github]
-	user = adwinying
-
+	user = dharada
 [core]
-	editor = nvim
+	editor = vim
